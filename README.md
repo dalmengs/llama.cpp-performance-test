@@ -6,16 +6,18 @@
 
 - Platform: Google Cloud Platform(GCP): VM Instance</br>
 - Instance:</br>
--- Instance Type: n1-standard-4</br>
--- CPU Platform: Intel Skylake</br>
--- CPU & Mem. Resources: 4vCPU, 15GM Mem.</br>
--- GPU: 1 x NVIDIA T4</br>
+- - Instance Type: n1-standard-4</br>
+- - CPU Platform: Intel Skylake</br>
+- - CPU & Mem. Resources: 4vCPU, 15GM Mem.</br>
+- - GPU: 1 x NVIDIA T4</br>
 </br>
+
 <h3>Hugging Face Model Repository</h3>
 Model Name: microsoft/Phi-3-mini-4k-instruct-gguf </br>
 https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf</br></br>
 
 <h3>How to install model</h3>
+
 1. Install Hugging Face CLI:
 
 `pip install huggingface-hub>=0.17.1`</br>
@@ -29,6 +31,7 @@ https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf</br></br>
 `huggingface-cli download microsoft/Phi-3-mini-4k-instruct-gguf Phi-3-mini-4k-instruct-q4.gguf --local-dir . --local-dir-use-symlinks False`</br>
 
 <h3>How to use model in Python</h3>
+
 1. Install llama.cpp-python</br>
 
 `! CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python`</br>
