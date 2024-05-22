@@ -32,7 +32,7 @@ https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf</br></br>
 
 <h3>How to use model in Python</h3>
 
-1. Install llama.cpp-python</br>
+1. Check driver installation</br>
 
 Checking Nvidia Driver Installation
 
@@ -84,14 +84,14 @@ output = llm(
 print(output['choices'][0]['text'])
 ```
 
-[+] llama_cpp model serving (Example server running command)</br>
+## + llama_cpp model serving (Example server running command)</br>
 
 ```
 python3 -m llama_cpp.server --model Phi-3-mini-4k-instruct-q4.gguf --host 0.0.0.0 --port 8000 --n_gpu_layers -1 --n_ctx 4096 --n_threads 5 --n_threads_batch 5
 
 ```
 
-You can refer to more parameter details here: https://llama-cpp-python.readthedocs.io/en/latest/api-reference/#high-level-api</br></br>
+You can refer to more parameter details here: https://llama-cpp-python.readthedocs.io/en/latest/api-reference/#high-level-api</br>
 
 [NOTE] Note that if you intented to use GPU resources, you have to check model loading log whether if `BLAS` flag is set to 1. (`BLAS = 1`)
 
