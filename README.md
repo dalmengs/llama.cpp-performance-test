@@ -34,9 +34,31 @@ https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf</br></br>
 
 1. Install llama.cpp-python</br>
 
-`! CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python`</br>
+Checking Nvidia Driver Installation
 
-2. Run the model (Test model with below demo project code)</br>
+```
+nvidia-smi
+```
+
+Checking CUDA Installation
+
+```
+nvcc --version
+```
+
+Check all these two are successfully installed.</br></br>
+
+
+2. Install llama.cpp-python</br>
+
+```
+conda create --name llama-env python=3.9
+conda activate llama-env
+conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit cuda-nvcc -y --copy
+CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python --no-cache-dir
+```
+
+3. Run the model (Test model with below demo project code)</br>
 
 ```python
 from llama_cpp import Llama
@@ -61,3 +83,15 @@ output = llm(
 
 print(output['choices'][0]['text'])
 ```
+
+[+] llama_cpp model serving (Example server running command)</br>
+
+```
+python3 -m llama_cpp.server --model Phi-3-mini-4k-instruct-q4.gguf --host 0.0.0.0 --port 8000 --n_gpu_layers -1 --n_ctx 4096 --n_threads 5 --n_threads_batch 5
+
+```
+
+You can refer to more parameter details here: https://llama-cpp-python.readthedocs.io/en/latest/api-reference/#high-level-api</br></br>
+
+[NOTE] Note that if you intented to use GPU resources, you have to check model loading log whether if `BLAS` flag is set to 1. (`BLAS = 1`)
+

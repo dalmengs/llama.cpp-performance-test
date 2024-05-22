@@ -27,7 +27,7 @@ async def request():
             "prompt": prompt
         }
     )
-    return response.json()["choices"][0]["text"]
+    return response.content
 
 @AsyncExecutionTime("Total Inference Execution Time")
 async def main():
